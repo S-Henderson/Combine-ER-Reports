@@ -20,8 +20,34 @@ import pandas.io.formats.excel
 # Remove pandas excel header formatting
 pandas.io.formats.excel.ExcelFormatter.header_style = None
 
+#--------------- PURPOSE ---------------#
+
+print("Purpose: Combine weekend ER reports to save time and potential manual copy/paste mistakes")
+
+print("****************************************************************************************************")
+
+#--------------- ASCII ART ---------------#
+
+print(r"""
+_________               ___.   .__                _____________________  __________                             __          
+\_   ___ \  ____   _____\_ |__ |__| ____   ____   \_   _____/\______   \ \______   \ ____ ______   ____________/  |_  ______
+/    \  \/ /  _ \ /     \| __ \|  |/    \_/ __ \   |    __)_  |       _/  |       _// __ \\____ \ /  _ \_  __ \   __\/  ___/
+\     \___(  <_> )  Y Y  \ \_\ \  |   |  \  ___/   |        \ |    |   \  |    |   \  ___/|  |_> >  <_> )  | \/|  |  \___ \ 
+ \______  /\____/|__|_|  /___  /__|___|  /\___  > /_______  / |____|_  /  |____|_  /\___  >   __/ \____/|__|   |__| /____  >
+        \/             \/    \/        \/     \/          \/         \/          \/     \/|__|                           \/ 
+""")
+
+print("****************************************************************************************************")
+
+#--------------- SOURCE AND DESTINATION PATHS ---------------#
+
 # Source directory where ER reports are saved
 src_dir = os.path.join(os.environ['USERPROFILE'], "Desktop", "python_projects", "combine_er_reports", "data", "raw")
+
+# Destination directory where ER reports are exported to
+dst_dir = os.path.join(os.environ['USERPROFILE'], "Desktop", "python_projects", "combine_er_reports", "data", "exports")
+
+#--------------- LIST FILES ---------------#
 
 # Get basename of each file
 file_list = [os.path.basename(x) for x in glob.glob(f"{src_dir}/Fraud Results for*.xls")]
@@ -30,6 +56,10 @@ print(*file_list, sep='\n')
 
 num_of_files = len(file_list)
 print(f"There are {num_of_files} files")
+
+print("****************************************************************************************************")
+
+#--------------- FIND UNIQUE CLIENTS ---------------#
 
 # Empty list to store unique client names
 client_list =[]
@@ -53,6 +83,10 @@ print(*client_list, sep='\n')
 
 num_of_clients = len(client_list)
 print(f"There are {num_of_clients} unique clients")
+
+print("****************************************************************************************************")
+
+#--------------- DATAFRAME PREP ---------------#
 
 # Column headers for ER file
 columns = ["Session", 
@@ -85,9 +119,12 @@ columns = ["Session",
            "Patient First Name", 
            "Patient Last Name"]
 
-# Destination directory where ER reports are exported to
-dst_dir = os.path.join(os.environ['USERPROFILE'], "Desktop", "python_projects", "combine_er_reports", "data", "exports")
+#--------------- CHANGE WORKING DIRECTORY ---------------#
+
+# To save combined ER files to exports folder
 os.chdir(dst_dir)
+
+#--------------- APPENDING & SAVING FILES ---------------#
 
 # Create blank df for each client
 for client in client_list:
@@ -115,18 +152,17 @@ for client in client_list:
         
         print("Sucessfully read file...")
         
-        #print(df_er_file.head(5))
+        # Optional -> print each df to check
+        print(df_er_file.head(5))
         
         # Append data to client blank df
         df_blank = df_blank.append(df_er_file, 
                                    ignore_index = True)
         
         # Set filename -> need to update P-Date & M-Date each time
-        #filename = "Fraud Results for " + client + " P-Date 10-10.11.12.13-2020_M-Date 10-09.10.11.12-2020" + ".xlsx"
-        
         filename = f"Fraud Results for {client} P-Date 10-10.11.12.13-2020_M-Date 10-09.10.11.12-2020.xlsx"
         
-        #print(filename)
+        print(filename)
         
         # Write data
         writer = pd.ExcelWriter(filename, 
@@ -143,10 +179,10 @@ for client in client_list:
         print(f"Successfully exported file for: {client}")
         
         print("****************************************************************************************************")
-        
 
+#--------------- SCRIPT COMPLETED ---------------#
 
-#writer.close()
+print("****************************************************************************************************")
 
 print("Script Successfully Completed")
 

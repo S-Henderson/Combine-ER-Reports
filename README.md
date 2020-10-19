@@ -10,6 +10,12 @@ It is time consuming menial task with lots of room for manual copy/paste errors 
 
 Time saved per Monday not manually combining 30+ files is around 20-25 minutes.
 
+## Usage
+
+Put all raw ER reports into directory User/Desktop/python_projects/combine_er_reports/data/raw
+
+Combined files with be saved to directory User/Desktop/python_projects/combine_er_reports/data/exports
+
 ## Installation
 
 Use the package manager [pip](https://pip.pypa.io/en/stable/) to install respective libraries.

@@ -6,7 +6,7 @@ Purpose: Combine weekend ER reports to save time and potential manual copy/paste
 
 After weekends, we work the reports that were run on the weekend as well as current day. 
 
-It is time and focus consuming and something we need to do on a regular basis (usually every Monday)
+It is time consuming menial task and something we need to do on a regular basis (usually every Monday)
 
 Time saved per Monday not manually combining 30+ files is around 20 minutes.
 

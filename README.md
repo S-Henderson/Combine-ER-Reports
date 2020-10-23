@@ -1,6 +1,6 @@
 # Combine-ER-Reports
 
-Purpose: Combine weekend ER reports to save time and potential manual copy/paste mistakes.
+Purpose: Combine (append) weekend ER reports to save time and potential manual copy/paste mistakes.
 
 ## Why Important
 

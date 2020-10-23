@@ -16,6 +16,8 @@ Put all raw ER report files (.xls) into directory User/Desktop/python_projects/c
 
 Combined files (.xlsx) will be exported to directory User/Desktop/python_projects/combine_er_reports/data/exports
 
+![Screenshot](docs/images/raw_data.png)
+
 ## Installation
 
 Use the package manager [pip](https://pip.pypa.io/en/stable/) to install respective libraries.

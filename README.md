@@ -23,7 +23,11 @@ pip install openpyxl
 
 ## Usage
 
+# Tools
+
 The script uses pandas to import file and append them together. It uses openpyxl to expor them as excel (.xlsx) files.
+
+### Instructions
 
 Put all raw ER report files (.xls) into directory User/Desktop/python_projects/combine_er_reports/data/raw
 

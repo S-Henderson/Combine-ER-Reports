@@ -33,7 +33,7 @@ Put all raw ER report files (.xls) into directory User/Desktop/python_projects/c
 
 ![Screenshot](docs/images/raw_data.png)
 
-Run the script
+Run the script...
 
 ![Screenshot](docs/images/terminal_display.png)
 

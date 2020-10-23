@@ -165,7 +165,7 @@ def append_files():
                                        ignore_index = True)
             
             # Set filename -> need to update P-Date & M-Date each time
-            filename = f"Fraud Results for {client} P-Date 10-10.11.12.13-2020_M-Date 10-09.10.11.12-2020.xlsx"
+            filename = f"Fraud Results for {client} P-Date 10-17.18.19-2020_M-Date 10-16.17.18-2020.xlsx"
             
             print(filename)
             

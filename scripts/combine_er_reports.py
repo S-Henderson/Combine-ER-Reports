@@ -1,11 +1,11 @@
 """
 Author: Scott Henderson
-Last Updated: Oct 18, 2020
+Last Updated: Oct 22, 2020
 
 Purpose: Combine weekend ER reports to save time and potential manual copy/paste mistakes
 
-Input: Raw ER reports (.xls) into project 'data/raw' folder
-Output: Combined ER reports (.xlsx) into 'data/exports' folder
+Input: Raw ER reports (.xls) from project 'data/raw' folder
+Output: Combined (appended) ER reports (.xlsx) into 'data/exports' folder
 """
 
 import os
@@ -24,7 +24,7 @@ pandas.io.formats.excel.ExcelFormatter.header_style = None
 
 print("Purpose: Combine weekend ER reports to save time and potential manual copy/paste mistakes")
 
-print("****************************************************************************************************")
+print("----------------------------------------------------------------------------------------------------")
 
 #--------------- ASCII ART ---------------#
 
@@ -37,27 +37,27 @@ _________               ___.   .__                _____________________  _______
         \/             \/    \/        \/     \/          \/         \/          \/     \/|__|                           \/ 
 """)
 
-print("****************************************************************************************************")
+print("----------------------------------------------------------------------------------------------------")
 
 #--------------- SOURCE AND DESTINATION PATHS ---------------#
 
 # Source directory where ER reports are saved
-src_dir = os.path.join(os.environ['USERPROFILE'], "Desktop", "python_projects", "combine_er_reports", "data", "raw")
+src_dir = os.path.join(os.path.expanduser("~"), "Desktop", "python_projects", "combine_er_reports", "data", "raw")
 
 # Destination directory where ER reports are exported to
-dst_dir = os.path.join(os.environ['USERPROFILE'], "Desktop", "python_projects", "combine_er_reports", "data", "exports")
+dst_dir = os.path.join(os.path.expanduser("~"), "Desktop", "python_projects", "combine_er_reports", "data", "exports")
 
 #--------------- LIST FILES ---------------#
 
 # Get basename of each file
-file_list = [os.path.basename(x) for x in glob.glob(f"{src_dir}/Fraud Results for*.xls")]
+file_list = [os.path.basename(file) for file in glob.glob(f"{src_dir}/Fraud Results for*.xls")]
 
 print(*file_list, sep='\n')
 
 num_of_files = len(file_list)
 print(f"There are {num_of_files} files")
 
-print("****************************************************************************************************")
+print("----------------------------------------------------------------------------------------------------")
 
 #--------------- FIND UNIQUE CLIENTS ---------------#
 
@@ -84,7 +84,7 @@ print(*client_list, sep='\n')
 num_of_clients = len(client_list)
 print(f"There are {num_of_clients} unique clients")
 
-print("****************************************************************************************************")
+print("----------------------------------------------------------------------------------------------------")
 
 #--------------- DATAFRAME PREP ---------------#
 
@@ -126,63 +126,71 @@ os.chdir(dst_dir)
 
 #--------------- APPENDING & SAVING FILES ---------------#
 
-# Create blank df for each client
-for client in client_list:
+def append_files():
+    """
+    Takes client -> creates empty df for client -> finds all files matching that client and appends data to empty df -> moves to next client match
+    """
     
-    print(client)
-    
-    # Find the files associated with each client
-    files = glob.glob(f"{src_dir}/*{str(client)}*.xls")
-    
-    #print(files)
-    
-    # Create a blank dataframe to store each client's data
-    print("Creating blank dataframe...")
-    
-    # Create df with column headers
-    df_blank = pd.DataFrame(columns = columns)
-    
-    # Appends all the files for the relevant client into one df and saves it 
-    for file in files:
+    # Create blank df for each client
+    for client in client_list:
         
-        print("Reading file...")
+        print(client)
         
-        df_er_file = pd.read_excel(file,
-                                   sheet_name = "AllSessionSorted")
+        # Find the files associated with each client
+        files = glob.glob(f"{src_dir}/*{str(client)}*.xls")
         
-        print("Sucessfully read file...")
+        #print(files)
         
-        # Optional -> print each df to check
-        print(df_er_file.head(5))
+        # Create a blank dataframe to store each client's data
+        print("Creating blank dataframe...")
         
-        # Append data to client blank df
-        df_blank = df_blank.append(df_er_file, 
-                                   ignore_index = True)
+        # Create df with column headers
+        df_blank = pd.DataFrame(columns = columns)
         
-        # Set filename -> need to update P-Date & M-Date each time
-        filename = f"Fraud Results for {client} P-Date 10-10.11.12.13-2020_M-Date 10-09.10.11.12-2020.xlsx"
-        
-        print(filename)
-        
-        # Write data
-        writer = pd.ExcelWriter(filename, 
-                                engine = "openpyxl")
-        
-        df_blank.to_excel(writer, 
-                          sheet_name = "AllSessionSorted",
-                          index = False)
-        
-        print("Exporting file...")
-        
-        writer.save()
-        
-        print(f"Successfully exported file for: {client}")
-        
-        print("****************************************************************************************************")
+        # Appends all the files for the relevant client into one df and saves it 
+        for file in files:
+            
+            print("Reading file...")
+            
+            df_er_file = pd.read_excel(file,
+                                       sheet_name = "AllSessionSorted")
+            
+            print("Sucessfully read file...")
+            
+            # Optional -> print each df to check
+            print(df_er_file.head(5))
+            
+            # Append data to client blank df
+            df_blank = df_blank.append(df_er_file, 
+                                       ignore_index = True)
+            
+            # Set filename -> need to update P-Date & M-Date each time
+            filename = f"Fraud Results for {client} P-Date 10-10.11.12.13-2020_M-Date 10-09.10.11.12-2020.xlsx"
+            
+            print(filename)
+            
+            # Write data
+            writer = pd.ExcelWriter(filename, 
+                                    engine = "openpyxl")
+            
+            df_blank.to_excel(writer, 
+                              sheet_name = "AllSessionSorted",
+                              index = False)
+            
+            print("Exporting file...")
+            
+            writer.save()
+            
+            print(f"Successfully exported file for: {client}")
+            
+            print("----------------------------------------------------------------------------------------------------")
+
+# Call loop function
+append_files()
 
 #--------------- SCRIPT COMPLETED ---------------#
 
-print("****************************************************************************************************")
+print("----------------------------------------------------------------------------------------------------")
 
 print("Script Successfully Completed")
 

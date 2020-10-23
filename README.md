@@ -14,9 +14,15 @@ Time saved using this script is around 20-25 minutes.
 
 Put all raw ER report files (.xls) into directory User/Desktop/python_projects/combine_er_reports/data/raw
 
+![Screenshot](docs/images/raw_data.png)
+
+Run the script
+
+![Screenshot](docs/images/terminal_display.png)
+
 Combined files (.xlsx) will be exported to directory User/Desktop/python_projects/combine_er_reports/data/exports
 
-![Screenshot](docs/images/raw_data.png)
+![Screenshot](docs/images/exports_data.png)
 
 ## Installation
 

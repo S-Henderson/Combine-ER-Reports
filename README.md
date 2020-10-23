@@ -10,6 +10,17 @@ Combining the files (usually 30-35 files) is a time consuming menial task with l
 
 Time saved using this script is around 20-25 minutes.
 
+## Installation
+
+Use the package manager [pip](https://pip.pypa.io/en/stable/) to install respective libraries.
+
+```bash
+pip install pandas
+pip install numpy
+pip install glob
+pip install openpyxl
+```
+
 ## Usage
 
 Put all raw ER report files (.xls) into directory User/Desktop/python_projects/combine_er_reports/data/raw
@@ -23,17 +34,6 @@ Run the script
 Combined files (.xlsx) will be exported to directory User/Desktop/python_projects/combine_er_reports/data/exports
 
 ![Screenshot](docs/images/exports_data.png)
-
-## Installation
-
-Use the package manager [pip](https://pip.pypa.io/en/stable/) to install respective libraries.
-
-```bash
-pip install pandas
-pip install numpy
-pip install glob
-pip install openpyxl
-```
 
 ## Error Messages
 

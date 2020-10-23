@@ -29,7 +29,7 @@ pip install openpyxl
 
 ## Error Messages
 
-The code prints out an error message when run:
+The script prints out an error message when run:
 
 ```python
 "WARNING *** OLE2 inconsistency: SSCS size is 0 but SSAT size is non-zero"

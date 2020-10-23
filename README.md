@@ -27,6 +27,20 @@ pip install glob
 pip install openpyxl
 ```
 
+## Error Messages
+
+The code prints out an error message when run:
+
+```python
+"WARNING *** OLE2 inconsistency: SSCS size is 0 but SSAT size is non-zero"
+```
+
+This is due to importing .xls files and exporting as .xlsx and seems to be an issue with working with unicode characters.
+
+xls seems to use the utf_16 file format while xlsx does not, hence the mis-match format warning message.
+
+For testing I used .xlsx to import and did not receive this error message when running the script.
+
 ## Contributing
 
 I was helped immensely by https://github.com/Fehiroh who walked me through the logic and thought process of the script (originally done in R/tidyverse). I then re-worked the script into Python/Pandas using the same logic. 

@@ -1,12 +1,12 @@
 # Combine-ER-Reports
 
-Purpose: Combine weekend ER reports to save time and potential manual copy/paste mistakes
+Purpose: Combine weekend ER reports to save time and potential manual copy/paste mistakes.
 
 ## Why Important
 
-After weekends, we work the reports that were run on the weekend as well as current day. 
+After weekends, we work the reports that were run on the weekend as well as current day. Therefore we combine (append) all files and work mutiple days as 1 file.
 
-It is a time consuming menial task with lots of room for manual copy/paste errors and something my work team needs to do on a regular basis (usually every Monday)
+Combining files is a time consuming menial task with lots of room for manual copy/paste errors and something my work team needs to do on a regular basis (usually every Monday).
 
 Time saved per Monday not manually combining 30+ files is around 20-25 minutes.
 

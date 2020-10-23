@@ -14,7 +14,7 @@ Time saved per Monday not manually combining 30+ files is around 20-25 minutes.
 
 Put all raw ER reports (.xls) into directory User/Desktop/python_projects/combine_er_reports/data/raw
 
-Combined files (.xlsx) with be saved to directory User/Desktop/python_projects/combine_er_reports/data/exports
+Combined files (.xlsx) can be saved to directory User/Desktop/python_projects/combine_er_reports/data/exports
 
 ## Installation
 

@@ -35,6 +35,8 @@ Put all raw ER report files (.xls) into directory User/Desktop/python_projects/c
 
 Run the script...
 
+![Screenshot](docs/images/terminal_display.png)
+
 Combined files (.xlsx) will be exported to directory User/Desktop/python_projects/combine_er_reports/data/exports
 
 ![Screenshot](docs/images/exports_data.png)

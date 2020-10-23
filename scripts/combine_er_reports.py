@@ -139,6 +139,7 @@ def append_files():
         # Find the files associated with each client
         files = glob.glob(f"{src_dir}/*{str(client)}*.xls")
         
+        # Optional -> print list of client group of files
         #print(files)
         
         # Create a blank dataframe to store each client's data
@@ -158,7 +159,7 @@ def append_files():
             print("Sucessfully read file...")
             
             # Optional -> print each df to check
-            print(df_er_file.head(5))
+            #print(df_er_file.head(5))
             
             # Append data to client blank df
             df_blank = df_blank.append(df_er_file, 
@@ -167,7 +168,7 @@ def append_files():
             # Set filename -> need to update P-Date & M-Date each time
             filename = f"Fraud Results for {client} P-Date 10-17.18.19-2020_M-Date 10-16.17.18-2020.xlsx"
             
-            print(filename)
+            print(f"Appending to file -> {filename}")
             
             # Write data
             writer = pd.ExcelWriter(filename, 

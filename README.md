@@ -37,7 +37,7 @@ The script prints out an error message when run:
 
 This is due to importing .xls files and exporting as .xlsx and seems to be an issue with working with unicode characters.
 
-xls seems to use the utf_16 file format while xlsx does not, hence the mis-match format warning message.
+xls seems to use the UTF-16 file format while xlsx using UTF-8, hence the inconsistency format warning message.
 
 For testing I used .xlsx to import and did not receive this error message when running the script.
 

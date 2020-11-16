@@ -57,12 +57,6 @@ xls seems to use the UTF-16 file format while xlsx using UTF-8, hence the incons
 
 For testing I used .xlsx to import and did not receive this error message when running the script.
 
-## Possible Future Improvements
-
-At this time, it is still a manual process to manually rename the dates for the exported file(s). We may have more than 3 days to combine (holidays etc) so it is still easiest to keep manual. 
-
-![Screenshot](docs/images/filename_issue.png)
-
 ## Contributing
 
 I was helped immensely by https://github.com/Fehiroh who walked me through the logic and thought process of the script (originally done in R/tidyverse). I then re-worked the script into Python/Pandas using the same logic. 

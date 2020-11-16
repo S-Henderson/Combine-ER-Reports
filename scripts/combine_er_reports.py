@@ -1,6 +1,6 @@
 """
 Author: Scott Henderson
-Last Updated: Oct 22, 2020
+Last Updated: Nov 16, 2020
 
 Purpose: Combine weekend ER reports to save time and potential manual copy/paste mistakes
 
@@ -9,12 +9,11 @@ Output: Combined (appended) ER reports (.xlsx) into 'data/exports' folder
 """
 
 import os
-
 import pandas as pd
 import numpy as np
+import openpyxl
 import glob
-import datetime
-
+from datetime import datetime, timedelta
 import pandas.io.formats.excel
 
 # Remove pandas excel header formatting
@@ -165,8 +164,25 @@ def append_files():
             df_blank = df_blank.append(df_er_file, 
                                        ignore_index = True)
             
-            # Set filename -> need to update P-Date & M-Date each time
-            filename = f"Fraud Results for {client} P-Date 10-17.18.19-2020_M-Date 10-16.17.18-2020.xlsx"
+            # Set filename
+            
+            # For Mondays - add together weekend + Monday (past 3 days) & modified date is that Friday-Sat-Sun (past 3 days minus 1 etc)
+            
+            # Month/Year
+            month = datetime.datetime.now().strftime('%m')
+            year = datetime.datetime.now().strftime('%Y')
+            
+            # Days
+            d = datetime.datetime.now().strftime('%d')
+            d1 = (datetime.datetime.now() - datetime.timedelta(days=1)).strftime('%d')
+            d2 = (datetime.datetime.now() - datetime.timedelta(days=2)).strftime('%d')
+            d3 = (datetime.datetime.now() - datetime.timedelta(days=3)).strftime('%d')
+
+            # Filename
+            filename = f"Fraud Results for {client} P-Date {month}.{d2}.{d1}.{d}-{year}_M-Date {month}.{d3}.{d2}.{d1}-{year}.xlsx"
+            
+            # Edit-able filename
+            #filename = f"Fraud Results for {client} P-Date 11.07.08.09-2020_M-Date 11.06.07.08-2020.xlsx"
             
             print(f"Appending to file -> {filename}")
             

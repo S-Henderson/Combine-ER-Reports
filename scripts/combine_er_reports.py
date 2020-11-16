@@ -13,7 +13,8 @@ import pandas as pd
 import numpy as np
 import openpyxl
 import glob
-from datetime import datetime, timedelta
+import datetime
+from datetime import timedelta
 import pandas.io.formats.excel
 
 # Remove pandas excel header formatting

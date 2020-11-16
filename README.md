@@ -17,8 +17,9 @@ Use the package manager [pip](https://pip.pypa.io/en/stable/) to install respect
 ```bash
 pip install pandas
 pip install numpy
-pip install glob
 pip install openpyxl
+pip install glob
+pip install datetime
 ```
 
 ## Usage

@@ -26,7 +26,7 @@ pip install datetime
 
 ### Tools/Libraries
 
-The script uses pandas to import file and append them together. It uses openpyxl to expor them as excel (.xlsx) files.
+The script uses pandas to import file and append them together. It uses openpyxl to export them as excel (.xlsx) files.
 
 ### Instructions
 

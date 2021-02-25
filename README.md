@@ -8,7 +8,7 @@ After weekends, we work the reports that were run on the weekend as well as curr
 
 Combining the files (usually 30-35 files) is a time consuming menial task with lots of room for manual copy/paste errors and something my work team needs to do on a regular basis (usually every Monday).
 
-Time saved using this script is around 20-25 minutes.
+Time saved using this script is around 25-35 minutes.
 
 ## Installation
 

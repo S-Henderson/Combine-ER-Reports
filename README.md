@@ -26,11 +26,11 @@ pip install datetime
 
 ### Tools/Libraries
 
-The script uses pandas to import file and append them together. It uses openpyxl to export them as excel (.xlsx) files.
+The script uses pandas to import .xls(x) files and append them together. It uses openpyxl to exports them as excel (.xlsx) files.
 
 ### Instructions
 
-Put all raw ER report files (.xls) into directory User/Desktop/python_projects/combine_er_reports/data/raw
+Put all raw ER report excel files (usually .xls) into directory User/Desktop/python_projects/combine_er_reports/data/raw
 
 ![Screenshot](docs/images/raw_data.png)
 
